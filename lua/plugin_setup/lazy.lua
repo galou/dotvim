@@ -836,7 +836,15 @@ require('lazy').setup({
 
   -- Open Jupyter notebooks (*.ipynb) thanks to the external jupytext
   -- executable.
-  'goerz/jupytext.vim',
+  -- https://github.com/goerz/jupytext.nvim
+  -- Cannot execute code cells.
+  -- The notebook should not be open with jupyter-lab or jupyter-notebook
+  -- because this causes troubles since jupytext.nvim updates files
+  -- regularly.
+  {'goerz/jupytext.nvim',
+    config = function() require('plugin_setup.jupytext') end,
+    ft = {'json'},  -- Notebook are and appear as JSON in Vim.
+  },
 
   -- Show diffs in git repositories.
   -- Enable with :GitGutterEnable.
