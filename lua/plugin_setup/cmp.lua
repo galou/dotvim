@@ -120,6 +120,7 @@ cmp.setup({
     { name = 'buffer' },
     { name = 'rg' },
     { name = 'latex_symbols' },
+    max_item_count = 1000,
   }),
   sorting = {
     comparators = {
