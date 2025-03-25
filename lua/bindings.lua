@@ -206,3 +206,22 @@ vim.keymap.set('n', '|', hop.hint_anywhere)
 -- vim.keymap.set('n', '<leader>fa', fastaction.code_action, opts)
 -- vim.keymap.set('v', '<leader>fa', fastaction.range_code_action, opts)
 
+-- molten.nvim
+-- -----------
+-- https:://github.com/tjdevries/molten.nvim
+vim.keymap.set("n", "<localleader>mi", ":MoltenInit<CR>",
+    { noremap = true, silent = true, desc = "Initialize the plugin" })
+vim.keymap.set("n", "<localleader>e", ":MoltenEvaluateOperator<CR>",
+    { noremap = true, silent = true, desc = "run operator selection" })
+vim.keymap.set("n", "<C-CR>", ":MoltenEvaluateLine<CR>",
+    { noremap = true, silent = true, desc = "evaluate line" })
+vim.keymap.set("n", "<localleader>rr", ":MoltenReevaluateCell<CR>",
+    { noremap = true, silent = true, desc = "re-evaluate cell" })
+vim.keymap.set("v", "<C-CR>", ":<C-u>MoltenEvaluateVisual<CR>gv",
+    { noremap = true, silent = true, desc = "evaluate visual selection" })
+vim.keymap.set("n", "<localleader>rd", ":MoltenDelete<CR>",
+    { noremap = true, silent = true, desc = "molten delete cell" })
+vim.keymap.set("n", "<localleader>oh", ":MoltenHideOutput<CR>",
+    { noremap = true, silent = true, desc = "hide output" })
+vim.keymap.set("n", "<localleader>os", ":noautocmd MoltenEnterOutput<CR>",
+    { noremap = true, silent = true, desc = "show/enter output" })

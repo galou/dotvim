@@ -437,6 +437,10 @@ hi BiscuitColor guifg=Grey23
 hi! link MultiCursorCursor Cursor
 hi! link MultiCursorVisual Visual
 
+" molten.nvim
+" Originally: hi! link MoltenCell CursorLine
+hi! MoltenCell cterm=underline ctermfg=NONE guibg=NvimDarkGrey2
+
 let g:colors_name = "gaels"
 
 " vim: sw=2

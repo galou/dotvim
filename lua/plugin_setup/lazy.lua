@@ -97,6 +97,12 @@ spec = {
     ft = {'python'},
   },
 
+  -- Running code interactively with a Jupyter kernel.
+  -- https://github.com/benlubas/molten-nvim
+  -- :Molten*
+  -- Keys maps in ../bindings.lua.
+  { import = 'plugin_setup.molten' },
+
   -- Display images in the terminal.
   -- https://github.com/3rd/image.nvim
   { import = 'plugin_setup.image' },
