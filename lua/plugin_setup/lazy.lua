@@ -97,6 +97,10 @@ spec = {
     ft = {'python'},
   },
 
+  -- Display images in the terminal.
+  -- https://github.com/3rd/image.nvim
+  { import = 'plugin_setup.image' },
+
   -- Pairs of handy bracket mappings.
   'tpope/vim-unimpaired',
 
