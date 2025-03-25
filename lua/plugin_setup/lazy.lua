@@ -348,10 +348,6 @@ spec = {
   -- :Tagbar
   'majutsushi/tagbar',
 
-  -- Regenerate tag files on the go.
-  -- Alternative: https://github.com/JMarkin/gentags.lua.git.
-  'ludovicchabant/vim-gutentags',
-
   -- extended % matching for HTML, LaTeX, and many other languages
   'tmhedberg/matchit',
 
