@@ -388,8 +388,14 @@ spec = {
   --   `lua MiniTrailspace.trim()`.
   {'echasnovski/mini.nvim',
     config = function() require('plugin_setup.mini') end,
-    event = {'BufEnter', 'BufRead'},
+    -- Do not use `BufEnter` to avoid showing whitespace on
+    -- Snacks' dashboard.
+    event = {'BufRead'},
   },
+
+  -- A collection of small Quality-of-Life plugins for Neovim.
+  -- https://github.com/folke/snacks.nvim
+  { import = 'plugin_setup.snacks' },
 
   -- Show cursors jumps.
   'danilamihailov/beacon.nvim',
