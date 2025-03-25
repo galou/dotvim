@@ -17,6 +17,7 @@ local key_binding_opts = {noremap = true, silent = true}
 
 require('lazy').setup({
 
+spec = {
   -- git integration.
   {'tpope/vim-fugitive',
     cmd = {
@@ -1183,5 +1184,6 @@ require('lazy').setup({
   -- Replaced by nvim-treesitter.
   -- 'vim-scripts/syntastic',
 
+},
 })
 
