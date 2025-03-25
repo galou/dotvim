@@ -344,10 +344,6 @@ spec = {
     lazy = false,
   },
 
-  -- A class outline viewer, requires ctags.
-  -- :Tagbar
-  'majutsushi/tagbar',
-
   -- extended % matching for HTML, LaTeX, and many other languages
   'tmhedberg/matchit',
 
