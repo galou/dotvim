@@ -1185,5 +1185,10 @@ spec = {
   -- 'vim-scripts/syntastic',
 
 },
+{
+    rocks = {
+      root = vim.fn.expand("~") .. "/.luarocks",
+      hererocks = nil,  -- Prefer luarocks, use hererocks as fallback.
+    },
+},
 })
-
