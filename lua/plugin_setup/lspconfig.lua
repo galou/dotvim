@@ -1,6 +1,6 @@
 -- Configuration for https://github.com/neovim/nvim-lspconfig
 --
--- :LspInstall bashls biome cmake ccsls dockerls jsonls lemminx ltex lua_ls pylsp ruff spectral texlab
+-- :LspInstall bashls biome cmake ccsls dockerls jedi_language_server jsonls lemminx ltex lua_ls pylsp ruff spectral texlab
 
 local lspconfig = require('lspconfig')
 -- local configs = require('lspconfig.configs')
@@ -48,6 +48,7 @@ local servers = {
   "dockerls", -- dockerfile (`LspInstall dockerls` or `npm install -g dockerfile-language-server-nodejs`)
   "dotls", -- Graphviz dot (https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally, then `npm i -g dot-language-server`)
   "gopls", -- Go (GO111MODULE=on go get golang.org/x/tools/gopls@latest) or sudo snap install gopls
+  "jedi_language_server",  -- Python (`:LspInstall jedi_language_server`).
   "jsonls", -- :LspInstall jsonls.
   "lemminx", -- xml, (https://github.com/eclipse/lemminx.git, :LspInstall lemminx).
   "ltex",  -- LaTeX, Markdown, and others (:LspInstall ltex)
@@ -90,33 +91,33 @@ end
 -- lspconfig.black.setup{}
 
 -- pylsp, Python (https://github.com/python-lsp/python-lsp-server, `pip3 install python-lsp-server` or `LspInstall pylsp`)
-lspconfig.pylsp.setup({
-  on_attach = on_attach,
-  settings = {
-    pylsp = {
-      plugins = {
-        autopep8 = { enabled = false },
-	black = { enabled = false },
-        flake8 = { enabled = false },
-	isort = { enabled = false, profile = 'black' },
-        jedi_completion = { enabled = true },
-        mccabe = { enabled = false },
-        pycodestyle = { enabled = false },
-        pylint = { enabled = false },
-        pylsp_mypy = {
-          -- https://github.com/python-lsp/pylsp-mypy#configuration
-          enabled = false,
-          report_progress = true,
-          live_mode = true,
-        },
-        rope = { enabled = false },
-        rope_autoimport = { enabled = true },  -- induces rope_autoimport.completions.enabled and rope_autoimport.code_actions.enabled
-        yapf = { enabled = false },
-      },
-    },
-  },
-  capabilities = cmp_capabilities,
-})
+-- lspconfig.pylsp.setup({
+--   on_attach = on_attach,
+--   settings = {
+--     pylsp = {
+--       plugins = {
+--         autopep8 = { enabled = false },
+-- 	black = { enabled = false },
+--         flake8 = { enabled = false },
+-- 	isort = { enabled = false, profile = 'black' },
+--         jedi_completion = { enabled = true },
+--         mccabe = { enabled = false },
+--         pycodestyle = { enabled = false },
+--         pylint = { enabled = false },
+--         pylsp_mypy = {
+--           -- https://github.com/python-lsp/pylsp-mypy#configuration
+--           enabled = false,
+--           report_progress = true,
+--           live_mode = true,
+--         },
+--         rope = { enabled = false },
+--         rope_autoimport = { enabled = true },  -- induces rope_autoimport.completions.enabled and rope_autoimport.code_actions.enabled
+--         yapf = { enabled = false },
+--       },
+--     },
+--   },
+--   capabilities = cmp_capabilities,
+-- })
 
 -- Cf. https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#jsonls.
 lspconfig.jsonls.setup {
@@ -186,7 +187,6 @@ lspconfig.jedi_language_server.setup {
   },
   capabilities = cmp_capabilities,
 }
-
 
 -- Change diagnostic symbols in the gutter.
 -- Possible symbols (the first is the default vim sign):
