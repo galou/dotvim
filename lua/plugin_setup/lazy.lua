@@ -12,9 +12,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- For plugins loaded on key bindings.
-local key_binding_opts = {noremap = true, silent = true}
-
 require('lazy').setup({
 
 spec = {
@@ -594,13 +591,6 @@ spec = {
     config = function() require('plugin_setup.treesitter') end,
     event = {'BufEnter', 'BufRead'},
   },
-
-  -- Write TreeSitter queries for you.
-  -- {'ziontee113/query-secretary',
-  --   keys = {
-  --     {'n', '<leader>s', require('query-secretary').query_window_initiate, key_binding_opts},
-  --   },
-  -- },
 
   -- Always show the function prototype.
   -- :TSContextToggle.
