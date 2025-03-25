@@ -252,7 +252,7 @@ vim.diagnostic.handlers.signs = {
   end,
 }
 
--- Print diagnostics in the message area.
+-- Print diagnostics with vim.notify().
 -- Cf. https://github.com/casonadams/simple-diagnostics.nvim for an alternative.
 function PrintDiagnostics(opts, bufnr, line_nr, client_id)
   opts = opts or {}
@@ -272,10 +272,9 @@ function PrintDiagnostics(opts, bufnr, line_nr, client_id)
       diagnostic_message = diagnostic_message .. "\n"
     end
   end
-  print(diagnostic_message)
+  vim.notify(diagnostic_message)
 end
-
-vim.cmd [[ autocmd CursorMoved * lua PrintDiagnostics() ]]
+-- vim.cmd [[ autocmd CursorMoved * lua PrintDiagnostics() ]]
 
 -- Customize text for completion types.
 local icons = require "lspconfig_icons"
