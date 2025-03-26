@@ -1057,6 +1057,12 @@ spec = {
     cmd = {'ColorizerAttachToBuffer', 'ColorizerToggle'},
   },
 
+  -- Syntax highlighting for iCalendar and VCard.
+  -- https://github.com/axvr/ical.vim
+  {'axvr/ical.vim',
+    ft = {'vcard', 'icalendar'},
+  },
+
   -- Easier work with code actions.
   -- https://github.com/Chaitanyabsprip/fastaction.nvim
   -- Keybindings in `bindings.lua` (`<leader>fa`).
