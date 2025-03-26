@@ -105,7 +105,7 @@ spec = {
   { import = 'plugin_setup.image' },
 
   -- Pairs of handy bracket mappings.
-  'tpope/vim-unimpaired',
+  {'tpope/vim-unimpaired'},
 
   -- Automatic indent detection.
   -- Alternative: 'nathanaelkane/vim-indent-guides',
@@ -631,10 +631,11 @@ spec = {
   --   crtl-t: in fzf, open in a new tab
   --   crtl-v: in fzf, open in a new vertical split
   --   crtl-x: in fzf, open in a new horizontal split
-  {'kevinhwang91/nvim-bqf',
-    ft = 'qf',
-    config = function() require('bqf').setup({}) end,
-  },
+  -- Deactivated because incompatible with `:0Gclog` from fugitive.
+  -- {'kevinhwang91/nvim-bqf',
+  --   ft = 'qf',
+  --   config = function() require('bqf').setup({}) end,
+  -- },
 
   -- Diff on part of files.
   -- Visual selection + :'<,'>Linediff twice on non-overlapping parts.
