@@ -582,6 +582,11 @@ spec = {
     event = {'BufEnter', 'BufRead'},
   },
 
+  -- CodeCompanion is a productivity tool which streamlines how you develop with LLMs,
+  -- in Neovim.
+  -- https://github.com/olimorris/codecompanion.nvim
+  { import = 'plugin_setup.codecompanion' },
+
   -- Syntax highlighting.
   -- :Inspect and :InspectTree for debugging.
   {'nvim-treesitter/nvim-treesitter',

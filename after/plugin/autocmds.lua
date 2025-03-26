@@ -35,10 +35,9 @@ local special_buffer_config = api.nvim_create_augroup('special_buffer_config', {
 vim.api.nvim_create_autocmd(
   'FileType',
   {
-    pattern = {'fugitive'},
+    pattern = {'fugitive', '[CodeCompanion]'},
     group = special_buffer_config,
     callback = function()
-      print('fugitive://.*')
       vim.wo.number = false
       vim.wo.relativenumber = false
       vim.wo.signcolumn = 'no'
