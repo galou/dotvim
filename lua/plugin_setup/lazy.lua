@@ -155,10 +155,7 @@ spec = {
   },
 
   -- Debugging in vim.
-  {'puremourning/vimspector',
-    -- build = './install_gadget.py --enable-python --enable-c --enable-bash --enable-go',
-    build = ':VimspectorInstall python c bash go'  -- post-install/update hook.
-  },
+  { import = 'plugin_setup.vimspector' },
 
   -- Debugging in vim with the Debug Adapter Protocol.
   -- :lua require('dap').continue() to launch.
