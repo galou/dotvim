@@ -170,13 +170,7 @@ spec = {
   -- UI extension for 'nvim-dap'
   -- Configured also in `neodev.lua`.
   -- `:lua require("dapui").open()`.
-  {'rcarriga/nvim-dap-ui',
-    dependencies = {
-      'mfussenegger/nvim-dap',
-      'nvim-neotest/nvim-nio',
-    },
-    config = function() require('dapui').setup({}) end,
-  },
+  { import = 'plugin_setup.dap-ui' },
 
   -- Browse files, buffers, lines ...
   -- Replacement for the deprecated 'Shougo/unite.vim'.
