@@ -384,6 +384,10 @@ spec = {
     event = {'BufRead'},
   },
 
+  -- Reveal whitespace characters in visual mode only.
+  -- https://github.com/mcauley-penney/visual-whitespace.nvim
+  { import = 'plugin_setup.visual-whitespace' },
+
   -- A collection of small Quality-of-Life plugins for Neovim.
   -- https://github.com/folke/snacks.nvim
   { import = 'plugin_setup.snacks' },
