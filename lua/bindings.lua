@@ -141,13 +141,21 @@ vim.keymap.set('n', ']D', function() require('delimited').goto_next({severity = 
 
 -- copilot.lua
 -- -----------
--- Workaround suggestion/accept (<W-l>) not working.
-local copilot_config = require("copilot.config")
-local copilot_suggestion = require('copilot.suggestion')
-vim.keymap.set('i', copilot_config.get('suggestion').keymap.accept, copilot_suggestion.accept, {
-  desc = "[copilot] accept suggestion",
-  silent = true,
-  noremap = false,
+-- Workaround suggestion/accept (<M-l>) not working.
+vim.keymap.set('i', '<M-l>', function()
+  local clients = vim.lsp.get_active_clients()
+  for _, client in ipairs(clients) do
+    if client.name == "copilot" then
+      require('copilot.suggestion').accept()
+      return
+    end
+  end
+  return "<M-l>"
+end,
+{
+    desc = '[copilot] accept suggestion',
+    expr = true,
+    noremap = true,
 })
 
 -- before.nvim
