@@ -65,3 +65,58 @@ vim.api.nvim_create_autocmd(
     end,
   }
 )
+
+-- Debugging with Vimspector.
+--
+-- Key        | Mapping                                     | Function
+-- F3         | <Plug>VimspectorStop                        | Stop debugging.
+-- F4         | <Plug>VimspectorRestart                     | Restart debugging with the same configuration.
+-- F5         | <Plug>VimspectorContinue                    | When debugging, continue. Otherwise start debugging.
+-- F6         | <Plug>VimspectorPause                       | Pause debuggee.
+-- F8         | <Plug>VimspectorAddFunctionBreakpoint       | Add a function breakpoint for the expression under cursor
+-- <leader>F8 | <Plug>VimspectorRunToCursor                 | Run to Cursor
+-- F9         | <Plug>VimspectorToggleBreakpoint            | Toggle line breakpoint on the current line.
+-- <leader>F9 | <Plug>VimspectorToggleConditionalBreakpoint | Toggle conditional line breakpoint or logpoint on the current line.
+-- F10        | <Plug>VimspectorStepOver                    | Step Over
+-- F11        | <Plug>VimspectorStepInto                    | Step Into
+-- F12        | <Plug>VimspectorStepOut                     | Step out of current function scope
+-- local vimspector_keymap = api.nvim_create_augroup('vimspector_keymap', {clear = true})
+-- vim.api.nvim_create_autocmd(
+--   'FileType',
+--   {
+--     pattern = {'c', 'cpp', 'python', 'rust'},
+--     group = vimspector_keymap,
+--     callback = function()
+--       vim.keymap.set('n', '<F3>', '<Plug>VimspectorStop', {buffer = true})
+--       vim.keymap.set('n', '<F4>', '<Plug>VimspectorRestart', {buffer = true})
+--       vim.keymap.set('n', '<F5>', '<Plug>VimspectorContinue', {buffer = true})
+--       vim.keymap.set('n', '<F6>', '<Plug>VimspectorPause', {buffer = true})
+--       vim.keymap.set('n', '<F8>', '<Plug>VimspectorAddFunctionBreakpoint', {buffer = true})
+--       vim.keymap.set('n', '<leader><F8>', '<Plug>VimspectorRunToCursor', {buffer = true})
+--       vim.keymap.set('n', '<F9>', '<Plug>VimspectorToggleBreakpoint', {buffer = true})
+--       vim.keymap.set('n', '<leader><F9>', '<Plug>VimspectorToggleConditionalBreakpoint', {buffer = true})
+--       vim.keymap.set('n', '<F10>', '<Plug>VimspectorStepOver', {buffer = true})
+--       vim.keymap.set('n', '<F11>', '<Plug>VimspectorStepInto', {buffer = true})
+--       vim.keymap.set('n', '<F12>', '<Plug>VimspectorStepOut', {buffer = true})
+--     end,
+--   }
+-- )
+
+-- Debugging with `nvim-dap`.
+local dap_keymap = api.nvim_create_augroup('dap_keymap', {clear = true})
+vim.api.nvim_create_autocmd(
+  'FileType',
+  {
+    pattern = {'c', 'cpp', 'python', 'rust'},
+    group = dap_keymap,
+    callback = function()
+      vim.keymap.set('n', '<F5>', ':lua require("dap").continue()<CR>', {buffer = true})
+      vim.keymap.set('n', '<F6>', ':lua require("dap").pause()<CR>', {buffer = true})
+      vim.keymap.set('n', '<F9>', ':lua require("dap").toggle_breakpoint()<CR>', {buffer = true})
+      vim.keymap.set('n', '<F10>', ':lua require("dap").step_over()<CR>', {buffer = true})
+      vim.keymap.set('n', '<F11>', ':lua require("dap").step_into()<CR>', {buffer = true})
+      vim.keymap.set('n', '<F12>', ':lua require("dap").step_out()<CR>', {buffer = true})
+      vim.keymap.set('n', '<leader>r', ':lua require("dap").repl.open()<CR>', {buffer = true})
+    end,
+  }
+)

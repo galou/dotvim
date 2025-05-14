@@ -80,19 +80,19 @@ dap.adapters.codelldb = {
     args = {'--port', '${port}'},
   },
   -- target = {
-  --   source-map = 
+  --   source-map =
   -- }
 }
 
-dap.configurations.cpp = {
-  {
-    name = "Launch file",
-    type = "codelldb",
-    request = "launch",
-    program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.expand('$HOME') .. '/' .. 'file')
-    end,
-    cwd = '${workspaceFolder}',
-    stopOnEntry = true,
-  },
-}
+-- dap.configurations.cpp = {
+--   {
+--     name = "Launch file",
+--     type = "codelldb",
+--     request = "launch",
+--     program = function()
+--       return vim.fn.input('Path to executable: ', vim.fn.expand('$HOME') .. '/' .. 'file')
+--     end,
+--     cwd = '${workspaceFolder}',
+--     stopOnEntry = false,
+--   },
+-- }
