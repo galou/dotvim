@@ -1066,7 +1066,7 @@ spec = {
   -- Easier work with code actions.
   -- https://github.com/Chaitanyabsprip/fastaction.nvim
   -- Keybindings in `bindings.lua` (`<leader>fa`).
-  -- {'Chaitanyabsprip/fastaction.nvim'},
+  { import = 'plugin_setup.fastaction' },
 
   -- 'tmhedberg/SimpylFold',
   -- 'vim-scripts/taglist.vim',
