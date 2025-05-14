@@ -3,35 +3,33 @@ local opts = {noremap = true, silent = true}
 -- LuaSnip
 -- -------
 
-local ls = require('luasnip')
-
 -- <C-e> is the expansion key.
 -- This will expand the current item or jump to the next item within the snippet.
 vim.keymap.set({ "i", "s" }, "<C-e>", function()
+  local ls = require('luasnip')
   if ls.expand_or_jumpable() then
     ls.expand_or_jump()
   end
-end, { silent = true })
+end, opts)
 
 -- <C-S-e> requires special support from the terminal emulator.
 -- Cf. https://www.reddit.com/r/neovim/comments/mbj8m5/how_to_setup_ctrlshiftkey_mappings_in_neovim_and/.
 vim.keymap.set({ "i", "s" }, "<C-S-e>", function()
+  local ls = require('luasnip')
   if ls.jumpable(-1) then
     ls.jump(-1)
   end
-end, { silent = true })
+end, opts)
 
 -- nvim-scissors.
 -- --------------
-vim.keymap.set("n", "<leader>se", function() require("scissors").editSnippet() end)
+vim.keymap.set("n", "<localleader>se", function() require("scissors").editSnippet() end)
 -- When used in visual mode prefills the selection as body.
-vim.keymap.set({ "n", "x" }, "<leader>sa", function() require("scissors").addNewSnippet() end)
+vim.keymap.set({ "n", "x" }, "<localleader>sa", function() require("scissors").addNewSnippet() end)
 
 -- Syntax Tree Surfer
 -- ------------------
--- Cf. https://github.com/ziontee113/syntax-tree-surfer.
-
-local sts = require('syntax-tree-surfer')
+-- Cf. https://github.com/ziontee113/syntax-tree-surfer
 
 -- Normal Mode Swapping:
 -- Swap The Master Node relative to the cursor with it's siblings, Dot Repeatable
@@ -78,33 +76,32 @@ vim.keymap.set("x", "<A-k>", '<cmd>STSSwapPrevVisual<cr>', opts)
 -- The Lua language schema uses "function", Python uses "function_definition".
 -- We include both, so this keymap will work on both languages.
 vim.keymap.set("n", "gfu", function()
-    sts.targeted_jump({ "function", "arrrow_function", "function_definition" })
+    require('syntax-tree-surfer').targeted_jump({ "function", "arrrow_function", "function_definition" })
   end, opts)
 
 -- Repeat the last jump.
 -- "default" means that you jump to the default_desired_types or your lastest jump types
 vim.keymap.set("n", "<A-n>", function()
-      sts.filtered_jump("default", true) --> true means jump forward
+      require('syntax-tree-surfer').filtered_jump("default", true) --> true means jump forward
   end, opts)
 vim.keymap.set("n", "<A-p>", function()
-      sts.filtered_jump("default", false) --> false means jump backwards
+      require('syntax-tree-surfer').filtered_jump("default", false) --> false means jump backwards
   end, opts)
 
 -- dial (improved increment)
 -- -------------------------
 -- Use [count]g<C-a> in line-wise or block-wise visual mode to
 -- increment by [count] at each line relative to its predecessor.
-local dm = require('dial.map')
-vim.keymap.set("n", "<C-a>", dm.inc_normal(), opts)
-vim.keymap.set("n", "<C-x>", dm.dec_normal(), opts)
-vim.keymap.set("v", "<C-a>", dm.inc_visual(), opts)
-vim.keymap.set("v", "<C-x>", dm.dec_visual(), opts)
-vim.keymap.set("v", "g<C-a>", dm.inc_gvisual(), opts)
-vim.keymap.set("v", "g<C-x>", dm.dec_gvisual(), opts)
+vim.keymap.set("n", "<C-a>", require('dial.map').inc_normal(), opts)
+vim.keymap.set("n", "<C-x>", require('dial.map').dec_normal(), opts)
+vim.keymap.set("v", "<C-a>", require('dial.map').inc_visual(), opts)
+vim.keymap.set("v", "<C-x>", require('dial.map').dec_visual(), opts)
+vim.keymap.set("v", "g<C-a>", require('dial.map').inc_gvisual(), opts)
+vim.keymap.set("v", "g<C-x>", require('dial.map').dec_gvisual(), opts)
 
 -- Aerial
 -- ------
-vim.keymap.set('n', '<leader>a', '<cmd>AerialToggle!<CR>', opts)
+vim.keymap.set('n', '<localleader>a', '<cmd>AerialToggle!<CR>', opts)
 
 -- query-secretary
 -- ---------------
@@ -112,7 +109,7 @@ vim.keymap.set('n', '<leader>a', '<cmd>AerialToggle!<CR>', opts)
 
 -- Oatmeal
 -- -------
-vim.keymap.set('n', '<leader>om', '<cmd>Oatmeal<CR>', opts)
+vim.keymap.set('n', '<localleader>om', '<cmd>Oatmeal<CR>', opts)
 
 -- <C-*> for * with telescope-live-grep-args.
 -- vim.keymap.set('n', '<C-*>', require('telescope-live-grep-args.shortcuts').live_grep_args_shortcuts.grep_word_under_cursor, opts)
@@ -120,8 +117,8 @@ vim.keymap.set('n', '<leader>om', '<cmd>Oatmeal<CR>', opts)
 -- BufferChad
 -- ----------
 -- In normal mode
--- <leader>fb: opens the bufferchad window.
--- <leader>f': opens the bufferchad window with only the marked buffers.
+-- <localleader>fb: opens the bufferchad window.
+-- <localleader>f': opens the bufferchad window with only the marked buffers.
 -- mset: mark buffer
 -- 1set, 2set, ...: mark buffer 1, 2, ...
 -- 1nav, 2nav, ...: jump to buffer 1, 2, ...
@@ -129,19 +126,18 @@ vim.keymap.set('n', '<leader>om', '<cmd>Oatmeal<CR>', opts)
 
 -- ros-nvim
 -- --------
--- <leader>fr: Telescope ros ros
+-- <localleader>fr: Telescope ros ros
 -- follow links in launch files
-vim.keymap.set('n', '<leader>rol', function() require('ros-nvim.ros').open_launch_include() end, opts)
+vim.keymap.set('n', '<localleader>rol', function() require('ros-nvim.ros').open_launch_include() end, opts)
 -- show definition for interfaces (messages/services) in floating window
-vim.keymap.set('n', '<leader>rdi', function() require('ros-nvim.ros').show_interface_definition() end, opts)
+vim.keymap.set('n', '<localleader>rdi', function() require('ros-nvim.ros').show_interface_definition() end, opts)
 
 -- delimited.nvim
 -- --------------
-local del = require('delimited')
-vim.keymap.set('n', '[d', del.goto_prev, opts)
-vim.keymap.set('n', ']d', del.goto_next, opts)
-vim.keymap.set('n', '[D', function() del.goto_prev({severity = vim.diagnostic.severity.ERROR}) end, opts)
-vim.keymap.set('n', ']D', function() del.goto_next({severity = vim.diagnostic.severity.ERROR}) end, opts)
+vim.keymap.set('n', '[d', require('delimited').goto_prev, opts)
+vim.keymap.set('n', ']d', require('delimited').goto_next, opts)
+vim.keymap.set('n', '[D', function() require('delimited').goto_prev({severity = vim.diagnostic.severity.ERROR}) end, opts)
+vim.keymap.set('n', ']D', function() require('delimited').goto_next({severity = vim.diagnostic.severity.ERROR}) end, opts)
 
 -- copilot.lua
 -- -----------
@@ -156,25 +152,23 @@ vim.keymap.set('i', copilot_config.get('suggestion').keymap.accept, copilot_sugg
 
 -- before.nvim
 -- -----------
-local before = require('before')
-
 -- Jump to previous entry in the edit history
-vim.keymap.set('n', '<C-k>', before.jump_to_last_edit, opts)
+vim.keymap.set('n', '<C-k>', require('before').jump_to_last_edit, opts)
 
 -- Jump to next entry in the edit history
-vim.keymap.set('n', '<C-j>', before.jump_to_next_edit, opts)
+vim.keymap.set('n', '<C-j>', require('before').jump_to_next_edit, opts)
 
 -- Look for previous edits in quickfix list
-vim.keymap.set('n', '<leader>oq', before.show_edits_in_quickfix, opts)
+vim.keymap.set('n', '<localleader>oq', require('before').show_edits_in_quickfix, opts)
 
 -- Look for previous edits in telescope (needs telescope, obviously)
-vim.keymap.set('n', '<leader>oe', before.show_edits_in_telescope, opts)
+vim.keymap.set('n', '<localleader>oe', require('before').show_edits_in_telescope, opts)
 
 -- multicursor.nvim
 -- ----------------
-local mc = require("multicursor-nvim")
 
 vim.keymap.set("n", "<esc>", function()
+  local mc = require("multicursor-nvim")
   if mc.hasCursors() then
     mc.clearCursors()
   else
@@ -193,18 +187,15 @@ end)
 -- vim.keymap.set("n", "<c-s>", function() mc.skipCursor("*") end)
 
 -- add and remove cursors with control + left click
-vim.keymap.set("n", "<c-leftmouse>", mc.handleMouse)
+vim.keymap.set("n", "<c-leftmouse>", require("multicursor-nvim").handleMouse)
 
 -- hop.nvim
 -- --------
-local hop = require('hop')
-vim.keymap.set('n', '|', hop.hint_anywhere)
+vim.keymap.set('n', '|', require('hop').hint_anywhere)
 
 -- fastaction.nvim
 -- ---------------
--- local fastaction = require('fastaction')
--- vim.keymap.set('n', '<leader>fa', fastaction.code_action, opts)
--- vim.keymap.set('v', '<leader>fa', fastaction.range_code_action, opts)
+vim.keymap.set('n', '<localleader>fa', require('fastaction').code_action, opts)
 
 -- molten.nvim
 -- -----------
