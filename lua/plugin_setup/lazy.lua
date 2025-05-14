@@ -393,7 +393,8 @@ spec = {
   { import = 'plugin_setup.snacks' },
 
   -- Show cursors jumps.
-  'danilamihailov/beacon.nvim',
+  -- https://github.com/danilamihailov/beacon.nvim
+  { import = 'plugin_setup.beacon' },
 
   -- Interface to cycle through git diffs.
   -- :Diffview..
