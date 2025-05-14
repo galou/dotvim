@@ -638,6 +638,10 @@ spec = {
   --   config = function() require('bqf').setup({}) end,
   -- },
 
+  -- Dynamically resizes 'cmdheight' to fit the content of messages.
+  -- https:://github.com/jake-stewart/auto-cmdheight.nvim
+  { import = 'plugin_setup.auto-cmdheight' },
+
   -- Diff on part of files.
   -- Visual selection + :'<,'>Linediff twice on non-overlapping parts.
   'AndrewRadev/linediff.vim',
