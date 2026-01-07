@@ -120,3 +120,24 @@ vim.api.nvim_create_autocmd(
     end,
   }
 )
+
+-- Special increments with dial.nvim.
+local dial_increment = api.nvim_create_augroup('dial_increment', {clear = true})
+vim.api.nvim_create_autocmd(
+  'FileType',
+  {
+    pattern = {'c', 'cpp'},
+    group = dial_increment,
+    callback = function()
+      local opts = {silent = true, noremap = true, buffer = true}
+      vim.keymap.set("n", "<C-a>", ':lua require("dial.map").manipulate("increment", "normal", "cpp")<CR>', opts)
+      vim.keymap.set("n", "<C-x>", ':lua require("dial.map").manipulate("decrement", "normal", "cpp")<CR>', opts)
+      vim.keymap.set("n", "g<C-a>", ':lua require("dial.map").manipulate("increment", "gnormal", "cpp")<CR>', opts)
+      vim.keymap.set("n", "g<C-x>", ':lua require("dial.map").manipulate("decrement", "gnormal", "cpp")<CR>', opts)
+      vim.keymap.set("v", "<C-a>", ':lua require("dial.map").manipulate("increment", "visual", "cpp")<CR>', opts)
+      vim.keymap.set("v", "<C-x>", ':lua require("dial.map").manipulate("decrement", "visual", "cpp")<CR>', opts)
+      vim.keymap.set("v", "g<C-a>", ':lua require("dial.map").manipulate("increment", "gvisual", "cpp")<CR>', opts)
+      vim.keymap.set("v", "g<C-x>", ':lua require("dial.map").manipulate("decrement", "gvisual", "cpp")<CR>', opts)
+    end,
+  }
+)
