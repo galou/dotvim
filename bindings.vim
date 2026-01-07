@@ -64,7 +64,7 @@ nnoremap <leader>f/ :vimgrep /<C-r>// %<CR><cmd>Telescope quickfix<CR>  " Search
 " bufferchad could be used for the same purpose (cf. lua/plugin_setup/bufferchad.lua).
 nnoremap <leader>fb <cmd>Telescope buffers<CR>
 nnoremap <leader>ff <cmd>Telescope find_files<CR>
-nnoremap <leader>fg <cmd>Telescope git_files<CR>
+nnoremap <leader>fg <cmd>Telescope git_files show_untracked=true<CR>
 nnoremap <Leader>f<S-g> <cmd>Telescope live_grep<CR>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fj <cmd>Telescope jumplist<CR>
