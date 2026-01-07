@@ -2,6 +2,7 @@
 --
 -- :LspInstall bashls biome cmake ccsls dockerls jedi_language_server jsonls lemminx ltex lua_ls pylsp ruff spectral texlab
 
+--[[ Deactivated in favor of native LSP configuration in Neovim 0.11+
 local lspconfig = require('lspconfig')
 -- local configs = require('lspconfig.configs')
 
@@ -274,9 +275,9 @@ function PrintDiagnostics(opts, bufnr, line_nr, client_id)
   end
   vim.notify(diagnostic_message)
 end
--- vim.cmd [[ autocmd CursorMoved * lua PrintDiagnostics() ]]
+-- vim.cmd [[ autocmd CursorMoved * lua PrintDiagnostics() ] ]
 
 -- Customize text for completion types.
 local icons = require "lspconfig_icons"
 icons.setup()
-
+]]
