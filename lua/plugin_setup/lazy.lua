@@ -450,7 +450,7 @@ spec = {
   -- :ClangdSwitchSourceHeader
   {'https://git.sr.ht/~p00f/clangd_extensions.nvim',
     config = function() require('plugin_setup.clangd_extensions') end,
-    commit = '798e377ec859087132b81d2f347b5080580bd6b1', -- Bug in 6d0bf368 (2023-05-23) with virtual text.
+    -- commit = '798e377ec859087132b81d2f347b5080580bd6b1', -- Bug in 6d0bf368 (2023-05-23) with virtual text.
     cmd = {
       'ClangdDisableInlayHints',
       'ClangdMemoryUsage',
