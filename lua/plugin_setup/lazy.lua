@@ -142,7 +142,9 @@ spec = {
   -- Editor agnostic configuration.
   'editorconfig/editorconfig-vim',
 
+  -- Status line.
   -- Use airline as alternative to unsupported powerline.
+  -- Alternatives: https://github.com/sontungexpt/witch-line
   {'vim-airline/vim-airline',
     lazy = false,
   },
