@@ -1,4 +1,3 @@
--- Configuration for zbirenbaum/copilot.lua.
 
 require('copilot').setup({
   panel = {

@@ -97,16 +97,6 @@ spec = {
     ft = {'python'},
   },
 
-  -- Running code interactively with a Jupyter kernel.
-  -- https://github.com/benlubas/molten-nvim
-  -- :Molten*
-  -- Keys maps in ../bindings.lua.
-  { import = 'plugin_setup.molten' },
-
-  -- Display images in the terminal.
-  -- https://github.com/3rd/image.nvim
-  { import = 'plugin_setup.image' },
-
   -- Pairs of handy bracket mappings.
   {'tpope/vim-unimpaired'},
 
@@ -146,7 +136,7 @@ spec = {
   -- Set the `path` variable for more efficient jump to file (gf).
   'tpope/vim-apathy',
 
-  -- TeX support, work better than atp with NeoVim.
+  -- TeX support, works better than atp with NeoVim.
   'lervag/vimtex',
 
   -- Editor agnostic configuration.
@@ -156,9 +146,6 @@ spec = {
   {'vim-airline/vim-airline',
     lazy = false,
   },
-
-  -- Debugging in vim.
-  { import = 'plugin_setup.vimspector' },
 
   -- Debugging in vim with the Debug Adapter Protocol.
   -- :lua require('dap').continue() to launch.
@@ -170,10 +157,6 @@ spec = {
     dependencies = {'mfussenegger/nvim-dap'},
     config = function() require('dap-python').setup('python') end,
   },
-  -- UI extension for 'nvim-dap'
-  -- Configured also in `neodev.lua`.
-  -- `:lua require("dapui").open()`.
-  { import = 'plugin_setup.dap-ui' },
 
   -- Browse files, buffers, lines ...
   -- Replacement for the deprecated 'Shougo/unite.vim'.
@@ -387,18 +370,6 @@ spec = {
     event = {'BufRead'},
   },
 
-  -- Reveal whitespace characters in visual mode only.
-  -- https://github.com/mcauley-penney/visual-whitespace.nvim
-  { import = 'plugin_setup.visual-whitespace' },
-
-  -- A collection of small Quality-of-Life plugins for Neovim.
-  -- https://github.com/folke/snacks.nvim
-  { import = 'plugin_setup.snacks' },
-
-  -- Show cursors jumps.
-  -- https://github.com/danilamihailov/beacon.nvim
-  { import = 'plugin_setup.beacon' },
-
   -- Interface to cycle through git diffs.
   -- :Diffview..
   {'sindrets/diffview.nvim',
@@ -425,16 +396,6 @@ spec = {
     dependencies = {'neovim/nvim-lspconfig'},
     -- Optional: 'rcarriga/nvim-notify'
     config = function() require('plugin_setup.nlspsettings') end,
-  },
-
-  -- Provide some installation scripts for some LSP servers, DAP servers,
-  -- linters, and formatters.
-  -- Replacement for 'williamboman/nvim-lsp-installer'
-  -- Alternative: https://github.com/dundalek/lazy-lsp.nvim.
-  {'williamboman/mason.nvim',
-    config = function() require('mason').setup({}) end,
-    -- event = {'BufEnter', 'BufRead'},
-    lazy = false,
   },
 
   -- Companion to mason.nvim.
@@ -564,15 +525,6 @@ spec = {
     cmd = {'DebugPrintsDelete', 'DebugPrintsToggleComment'},
   },
 
-  -- Github's Copilot.
-  -- Instead of the official copilot plugin ('github/copilot.vim').
-  {'zbirenbaum/copilot.lua',
-    cmd = 'Copilot',  -- Lazy-load with :Copilot.
-    config = function() require('plugin_setup.copilot') end,
-    -- event = 'InsertEnter',  -- Lazy-load on InsertEnter.
-    event = {'BufEnter', 'BufRead'},
-  },
-
   -- Integration of zbirenbaum/copilot with cmp.
   -- https://github.com/zbirenbaum/copilot-cmp
   {'zbirenbaum/copilot-cmp',
@@ -580,11 +532,6 @@ spec = {
     config = function () require('copilot_cmp').setup() end,
     event = {'BufEnter', 'BufRead'},
   },
-
-  -- CodeCompanion is a productivity tool which streamlines how you develop with LLMs,
-  -- in Neovim.
-  -- https://github.com/olimorris/codecompanion.nvim
-  { import = 'plugin_setup.codecompanion' },
 
   -- Syntax highlighting.
   -- :Inspect and :InspectTree for debugging.
@@ -621,25 +568,6 @@ spec = {
     config = function() require('plugin_setup.treesj') end,
     cmd = {'TSJToggle', 'TSJSplit', 'TSJJoin'},
   },
-
-  -- Improve layout and preview of the Quickfix window.
-  -- Shortcuts:
-  --   t: open in a new tab
-  --   T: open in a new tab, keep quickfix open
-  --   crtl-v: open in a new vertical split
-  --   crtl-x: open in a new horizontal split
-  --   <: previous quickfix list
-  --   >: next quickfix list
-  --   p: toggle preview (P: temporarily)
-  --   zf: open fzf
-  --   crtl-t: in fzf, open in a new tab
-  --   crtl-v: in fzf, open in a new vertical split
-  --   crtl-x: in fzf, open in a new horizontal split
-  -- Deactivated because incompatible with `:0Gclog` from fugitive.
-  -- {'kevinhwang91/nvim-bqf',
-  --   ft = 'qf',
-  --   config = function() require('bqf').setup({}) end,
-  -- },
 
   -- Dynamically resizes 'cmdheight' to fit the content of messages.
   -- https:://github.com/jake-stewart/auto-cmdheight.nvim
@@ -1050,11 +978,6 @@ spec = {
   {'axvr/ical.vim',
     ft = {'vcard', 'icalendar'},
   },
-
-  -- Easier work with code actions.
-  -- https://github.com/Chaitanyabsprip/fastaction.nvim
-  -- Keybindings in `bindings.lua` (`<leader>fa`).
-  { import = 'plugin_setup.fastaction' },
 
   -- 'tmhedberg/SimpylFold',
   -- 'vim-scripts/taglist.vim',

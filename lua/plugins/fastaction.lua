@@ -1,5 +1,10 @@
+-- Easier work with code actions.
+-- https://github.com/Chaitanyabsprip/fastaction.nvim
+-- Keybindings in `bindings.lua` (`<leader>fa`).
 return {
-  {'Chaitanyabsprip/fastaction.nvim',
+{
+  'Chaitanyabsprip/fastaction.nvim',
+
   opts = {
     dismiss_keys = { "j", "k", "<c-c>", "q" },
     override_function = function(_) end,
@@ -21,9 +26,10 @@ return {
         --   { pattern = "extract method", key ="x", order = 2 },
         --   { pattern = "extract widget", key ="e", order = 3 },
         -- },
-      },
-      register_ui_select = false,
-      format_right_section = nil
-   },
+    },
+    register_ui_select = false,
+    format_right_section = nil
   },
+
+},
 }
