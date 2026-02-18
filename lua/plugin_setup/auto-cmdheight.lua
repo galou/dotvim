@@ -3,8 +3,10 @@
 -- This removes the "Hit Enter" prompt for many cases.
 -- https:://github.com/jake-stewart/auto-cmdheight.nvim
 return {
-{'jake-stewart/auto-cmdheight.nvim',
+{
+  'jake-stewart/auto-cmdheight.nvim',
   lazy = false,
+
   opts = {
     -- max cmdheight before displaying hit enter prompt.
     max_lines = 5,
@@ -18,6 +20,7 @@ return {
     -- always clear the cmdline after duration and key press.
     -- by default it will only happen when cmdheight changed.
     clear_always = false,
-  }
+  },
+
 }
 }

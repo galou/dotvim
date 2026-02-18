@@ -15,6 +15,9 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
 
 spec = {
+  -- import plugins from `lua/plugins/*.lua`.
+  { import = 'plugins' },
+
   -- git integration.
   {'tpope/vim-fugitive',
     cmd = {
@@ -412,7 +415,7 @@ spec = {
   },
 
   -- Per-project LSP configuration.
-  -- https://github.com/tamago324/nlsp-settings.nvim.git
+  -- https://github.com/tamago324/nlsp-settings.nvim
   -- `:LspSettings buffer`: Open the global settings file that
   --                        matches the current buffer.
   -- `:LspSettings local buffer`: Open the local settings file

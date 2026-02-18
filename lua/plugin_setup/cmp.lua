@@ -1,4 +1,5 @@
--- Setup nvim-cmp (https://github.com/hrsh7th/nvim-cmp).
+-- Setup nvim-cmp
+-- https://github.com/hrsh7th/nvim-cmp
 -- TODO https://github.com/hrsh7th/nvim-cmp/wiki/Advanced-techniques#disabling-completion-in-certain-contexts-such-as-comments
 
 local cmp = require('cmp')

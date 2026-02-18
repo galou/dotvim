@@ -1,3 +1,7 @@
+-- Other bindings
+-- --------------
+-- lua/plugins/kulala.lua
+
 -- No recursive mapping and silent.
 local opts = { noremap = true, silent = true }
 
