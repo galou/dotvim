@@ -255,3 +255,20 @@ vim.keymap.set("v", "<C-CR>", ":<C-u>MoltenEvaluateVisual<CR>gv", desc("evaluate
 vim.keymap.set("n", "<localleader>rd", ":MoltenDelete<CR>", desc("molten delete cell"))
 vim.keymap.set("n", "<localleader>oh", ":MoltenHideOutput<CR>", desc("hide output"))
 vim.keymap.set("n", "<localleader>os", ":noautocmd MoltenEnterOutput<CR>", desc("show/enter output"))
+
+-- Telescope
+-- ---------
+-- Most bindings are in `bindings.vim`
+local function live_grep_git_root()
+  local git_root = vim.fn.systemlist('git rev-parse --show-toplevel')[1]
+  if vim.v.shell_error ~= 0 then
+    print("Not a git repository")
+    return
+  end
+  require('telescope.builtin').live_grep({
+    cwd = git_root,
+  })
+end
+
+vim.keymap.set('n', '<leader>f<S-g>', live_grep_git_root, desc('Live grep on git root'))
+

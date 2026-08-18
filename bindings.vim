@@ -65,7 +65,9 @@ nnoremap <leader>f/ :vimgrep /<C-r>// %<CR><cmd>Telescope quickfix<CR>  " Search
 nnoremap <leader>fb <cmd>Telescope buffers<CR>
 nnoremap <leader>ff <cmd>Telescope find_files<CR>
 nnoremap <leader>fg <cmd>Telescope git_files show_untracked=true<CR>
-nnoremap <Leader>f<S-g> <cmd>Telescope live_grep<CR>
+" <Leader>f<S-g> is defined in lua/bindings.lua to search with live_grep from
+" the root of the repository.
+"nnoremap <Leader>f<S-g> <cmd>Telescope live_grep<CR>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fj <cmd>Telescope jumplist<CR>
 nnoremap <leader>fk <cmd>Telescope commands<CR>
