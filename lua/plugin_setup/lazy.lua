@@ -544,11 +544,12 @@ spec = {
   },
 
   -- Always show the function prototype.
-  -- :TSContextToggle.
+  -- https://github.com/nvim-treesitter/nvim-treesitter-context
+  -- :TSContext.
   {'nvim-treesitter/nvim-treesitter-context',
     dependencies = {'nvim-treesitter/nvim-treesitter'},
     config = function() require('plugin_setup.treesitter-context') end,
-    cmd = {'TSContextToggle'},
+    cmd = {'TSContext'},
   },
 
   -- Jump or move elements according to their function
@@ -873,7 +874,6 @@ spec = {
 
   -- Standalone UI for nvim-lsp progress.
   {'j-hui/fidget.nvim',
-    branch = 'legacy',  -- Fixed on 2023-06-19 before announced breaking changes.
     config = function() require('fidget').setup({}) end,
     lazy = false,
   },
